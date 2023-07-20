@@ -1,0 +1,48 @@
+{% extends "base.html "%} {% load static %} 
+
+{% block style %}
+<link rel="stylesheet" href={% static "css/team.css"%}>
+{% endblock  %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+<h2>TEAM</h2>
+<div class="container">
+    <div class="card">
+        <div class="content">
+            <div class="imgbx"  style="border: none"><img src={% static "images/keshav.png" %} alt=""></div>
+            <div class="contentbx">
+                <h3 style="font-weight: bold;">Keshav Saini<br><span>Web Developer</span></h3>
+            </div>
+        </div>
+        <ul class="sci">
+            <li style="--i:1"><a href="https://www.linkedin.com/in/keshav-saini-8512a31b7" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            <li style="--i:2"><a href="mailto:keshavsainikesu@gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            <li style="--i:3"><a href="https://instagram.com/keshavsaini22?igshid=NTdlMDg3MTY=" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>
+                </a></li>
+        </ul>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="imgbx"  style="border: none"><img src={% static "images/Untitled.jpg" %} alt=""></div>
+            <div class="contentbx">
+                <h3 style="font-weight: bold;">Arwinder Singh<br><span>Web Developer</span></h3>
+            </div>
+        </div>
+        <ul class="sci">
+            <li style="--i:1"><a href="https://www.linkedin.com/in/arwinder-singh-9217181b8" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            <li style="--i:2"><a href="mailto:dhillonwind@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            <li style="--i:3"><a href="https://instagram.com/arwinderdhillon_?igshid=NTdlMDg3MTY=" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>
+                </a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

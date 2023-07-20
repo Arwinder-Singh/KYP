@@ -1,0 +1,39 @@
+{% load static %}
+<link rel="stylesheet" href={% static "css/popup.css" %}>
+
+<div class="popup">
+    <div class="contentBox">
+        <div class="close"></div>
+        <div class="imgBx">
+            <img src={% static "images/Instruction.png" %} alt="">
+        </div>
+        <div class="content">
+            <div>
+                <h3><u>INSTRUCTIONS</u></h3>
+            <!-- <h2>80 <sup>% <span>Off</span></sup></h2> -->
+            <ul>
+                <li>Minimum rating 0.5</li>
+                <li>Click Read me for description</li>
+                <li>Anonymously rating hundi a veero</li>
+            </ul>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora vitae itaque non nisi harum numquam assumenda dolore recusandae, dolor a quidem delectus. Optio expedita quisquam officiis rerum ex? Officiis, unde?</p> -->
+            <!-- <a href="#">Get the deal</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const popup=document.querySelector('.popup');
+    const close=document.querySelector('.close');
+    window.onload=function(){
+        setTimeout(function(){
+            popup.style.display="block"
+
+            //add some time
+        },2000)
+    }
+
+    close.addEventListener('click',()=>{
+        popup.style.display="none";
+    })
+</script>

@@ -1,0 +1,118 @@
+h3 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+h5 {
+    /* font-size: 24px; */
+    color: #333;
+    font-weight: bold;
+}
+
+#team img {
+    border: 2px solid #a1c4fd;
+    /* padding: 10px; */
+    margin-top: -70px;
+    object-fit: cover;
+}
+
+#team i {
+    font-size: 26px;
+    color: #555;
+}
+
+#team p {
+    font-weight: 500;
+}
+
+#team .card {
+    width: 20rem;
+    border-radius: 1.5rem !important;
+    /* background: linear-gradient(to top right, #a1c4fd, #c2e9fd); */
+    background: linear-gradient( to left top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8));
+    border-radius: 0;
+    box-shadow: 5px 5px 15px #a1c4fd;
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+}
+
+p {
+    text-align: start !important;
+    margin: 0 0 0rem 1rem !important;
+}
+
+
+/* Hide Radio button */
+
+.rate>input {
+    display: none;
+}
+
+.rate {
+    display: inline-block;
+    border: 0;
+}
+
+.rate>label {
+    color: #fff;
+    float: right;
+}
+
+
+/* Showing the stars */
+
+.rate>label:before {
+    display: inline-block;
+    font-size: 2rem;
+    font-family: FontAwesome;
+    content: "\f005";
+    margin: 0;
+    padding: 0.3rem .2rem;
+    cursor: pointer;
+}
+
+
+/* Half star */
+
+.rate .half:before {
+    content: "\f089";
+    position: absolute;
+    padding-right: 0;
+}
+
+
+/* Click and hover */
+
+input:checked~label,
+label:hover~label {
+    color: #ffb503;
+}
+
+
+/* hover hightlight */
+
+input:checked+label:hover,
+input:checked~label:hover,
+input:checked~label:hover~label,
+label:hover~input:checked~label {
+    color: #cc9000;
+}
+
+
+/* .rating-star i{
+  color: #ffb503 !important;
+}
+ */
+
+#rate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-secondary {
+    background-color: #658ec6 !important;
+    border-color: #658ec6 !important;
+}

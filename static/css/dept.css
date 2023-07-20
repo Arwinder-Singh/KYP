@@ -1,0 +1,58 @@
+#cards .card {
+    /* background: linear-gradient(to top right, #a1c4fd, #c2e9fd); */
+    /* background: linear-gradient(to right bottom, rgb(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)); */
+    /* background: rgb(239, 247, 255); */
+    background: linear-gradient( to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8));
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, .1) !important;
+    border-radius: 20px;
+    min-height: 100%;
+}
+
+#cards .heading-border {
+    position: absolute;
+    width: 100%;
+    top: 60%;
+}
+
+#cards .card .user-picture img {
+    position: absolute;
+    top: -27%;
+    right: 10%;
+    /* background: #ffffff!important; */
+    padding: 10px;
+}
+
+#cards .card .user-content .user-name {
+    margin-right: 150px;
+    font-weight: bold;
+    color: #658ec6 !important;
+    /* background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+p {
+    color: #658ec6 !important;
+}
+
+.page-item.active .page-link {
+    background-color: #466998;
+    border-color: #466998;
+}
+
+.paggI {
+    position: absolute !important;
+    bottom: 20px;
+    right: 150px;
+}
+
+@media screen and (max-width:550px) {
+    .paggI {
+        position: relative !important;
+        bottom: auto;
+        right: auto;
+    }
+    .display-3 {
+        margin-top: 20px;
+    }
+}

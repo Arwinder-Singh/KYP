@@ -1,0 +1,91 @@
+{% extends "base.html "%} {% load static %} {% block style %}
+
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"> -->
+<link rel="stylesheet" href={% static "css/contact.css" %}> {% endblock %} {% block content %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+
+<style>
+    p {
+        color: #658ec6;
+    }
+    
+    @media screen and (max-width:550px) {
+        .faq .faq-list a {
+            font-size: 14px;
+        }
+    }
+    
+    @media screen and (max-width:900px) {
+        .container {
+            width: 100%;
+        }
+        h2 {
+            font-weight: bold;
+            font-size: 30px;
+        }
+    }
+</style>
+<section class="faq ">
+    <div class="container">
+        <div class="faq-title">
+            <h2 style="color: #426696; ">Frequently Asked Questions</h2>
+        </div>
+        <div class="list">
+            <ul class="faq-list">
+                <li data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
+                    <a data-toggle="collapse" class="collapsed" href="#faq1" aria-expanded="false">How do I find a professor? <i
+            class="fas fa-arrow-up"></i></a>
+                    <div id="faq1" class="collapse" data-parent=".faq-list">
+                        <p>
+                            We've tried to make this site as intuitive as possible. You can simply search professor by name or you can filter out department wise through dropdown menu in navigation bar.
+                        </p>
+                    </div>
+                </li>
+
+                <li data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
+                    <a data-toggle="collapse" href="#faq2" class="collapsed">Can you explain the rating scale? <i
+            class="fas fa-arrow-up"></i></a>
+                    <div id="faq2" class="collapse" data-parent=".faq-list">
+                        <p>
+                            Rate Your Professor: Overall Quality (Good: 3.5-5, Average: 2.5-3.4, Poor: 1-2.4) A professor's Overall Quality rating should reflect how well a professor teaches the course material, and how helpful they are both inside and outside of the classroom.
+                            Is the professor available for additional help after class or during office hours? Is the professor approachable, nice and easy to communicate with?
+                        </p>
+                    </div>
+                </li>
+
+                <li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate">
+                    <a data-toggle="collapse" href="#faq3" class="collapsed">I cannot find professor on website anywhere? <i class="fas fa-arrow-up"></i></a>
+                    <div id="faq3" class="collapse" data-parent=".faq-list">
+                        <p>
+                            You can search professor by names. If you still got no results, then probably that professor is not added in database. Let us know about this. You can reach out to us through provided email address.We'll resolve that matter quickly.
+                            <address> <a href="mailto:knowyourprofessorpup@gmail.com">knowyourprofessorpup@gmail.com</a></address> </p>
+                    </div>
+                </li>
+
+
+
+                <li data-aos="fade-up" data-aos-delay="500" class="aos-init aos-animate">
+                    <a data-toggle="collapse" href="#faq5" class="collapsed">About us? <i class="fas fa-arrow-up"></i></a>
+                    <div id="faq5" class="collapse" data-parent=".faq-list">
+                        <p>
+                            Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                        </p>
+                    </div>
+                </li>
+
+                <li data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate">
+                    <a data-toggle="collapse" href="#faq6" class="collapsed">Have some more questions? <i class="fas fa-arrow-up"></i></a>
+                    <div id="faq6" class="collapse" data-parent=".faq-list">
+                        <p>
+                            You can reach out to us through provided email address. We'll try to give response as soon as possible.
+                            <address> <a href="mailto:knowyourprofessorpup@gmail.com">knowyourprofessorpup@gmail.com</a></address>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

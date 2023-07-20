@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;700&family=Poppins:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Titillium+Web:wght@300;400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    min-height: 100vh;
+    /* background: linear-gradient(to top left, #99ff66 -12%, #66ccff 100%); */
+    /* background: linear-gradient(to right top, #658ec6, #6cdbeb); */
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    /* background-color: rgb(190, 190, 190); */
+    /* background-color: #424530; */
+    /* background: linear-gradient(to top right, #65dfc9, #6cdbeb); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    /* padding: 50px; */
+}
+
+.glass {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: white;
+    min-height: 90vh;
+    width: 85%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    /* background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.456), rgba(255, 255, 255, 0.303)); */
+    border-radius: 2rem;
+    /* border-bottom: 5px solid white; */
+    z-index: 2;
+    backdrop-filter: blur(2rem);
+}
+
+.circle2,
+.circle1 {
+    background: white;
+    width: 95%;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+    height: 13rem;
+    width: 13rem;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circle1 {
+    top: 2%;
+    right: .5%
+}
+
+.circle2 {
+    bottom: .5%;
+    left: .5%
+}
+
+nav {
+    /* position: sticky;
+    top: 0; */
+    min-height: 10vh;
+    /* background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3)); */
+    background: linear-gradient( to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 2rem 2rem 1rem 1rem;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    /* border-radius: 2rem 2rem 0 0; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    /* font-family: 'Titillium Web', sans-serif; */
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+a {
+    /* /* color: #426696 !important; */
+    color: #426696 !important;
+    /* color: #0dc2d5 !important; */
+    /* opacity: 0.9; */
+    font-weight: 600;
+    /* color: #658ec6 !important; */
+}
+
+.dropdown-menu {
+    padding: 0;
+}
+
+.custom-toggler.navbar-toggler {
+    border: none;
+}
+
+.ui-widget.ui-widget-content {
+    border: none !important
+}
+
+.rounded-pill {
+    border-radius: 1rem !important;
+    width: 95%;
+}
+
+
+/* 
+.ui-widget {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 0.5em !important
+} */
+
+
+/* .ui-widget-content {
+    background: linear-gradient( to right bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3)) !important
+} */
+
+.input-group>.form-control,
+.input-group>.form-control-plaintext {
+    margin-left: 16px
+}
+
+
+/* 
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(230,0,31, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+} */
+
+.form-control {
+    color: #658ec6;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+.form-control::placeholder {
+    font-size: 1.1rem;
+    /* font-weight: 600px; */
+    /* color: #aaa; */
+    color: #658ec6;
+    /* color: #a1c4fd; */
+    font-style: italic;
+}
+
+@media (min-width: 992px) {
+    .donate-link-mobile {
+        opacity: 0;
+        visibility: hidden;
+        transition-property: opacity, visibility;
+        transition-duration: 0.1ms;
+    }
+    .donate-link-desktop {
+        display: block;
+    }
+}

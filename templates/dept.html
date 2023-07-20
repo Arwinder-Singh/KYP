@@ -1,0 +1,116 @@
+{% extends "base.html "%} {% load static %}
+
+{% block style %}
+<link rel="stylesheet" href={% static "css/dept.css" %}>
+{% endblock  %}
+
+{% block content %}
+
+
+<style>
+    #search_msg{
+        padding-top: 1rem;
+        text-align: center;
+        text-transform: capitalize;
+    }
+</style>
+<section id="cards">
+    <div class="container py-2">
+        <div class="row pb-4">
+            <div class="col-12 text-center">
+                <div class="display-3" style="color: #658ec6; font-weight:900; line-height:1">{{department}} </div>
+            </div>
+        </div>
+        {% for msg in messages %}
+        <h2 id="search_msg" style="color: #426696;">{{msg}}</h2>
+        {% endfor %}
+        <!-- cards -->
+        <div class="row">
+
+            {% for i in page.object_list %}
+
+            <div class="col-lg-4 col-md-6 mb-4 pt-5">
+                <div class="card shadow-sm border-0">
+                    <a href="/profile/{{i.id}}/" style="text-decoration: none;">
+                        <div class="card-body">
+                            <div class="user-picture">
+                                <img src="{{i.pic.url}}" class="shadow-sm rounded-circle" height="130" width="130" />
+                            </div>
+                            <div class="user-content">
+                                <h5 class="text-capitalize user-name">{{i.name}}</h5>
+                                 
+                                {% if i.mainRating == 0 %}
+                                <h6 class="text-capitalize user-name"></h6>
+                                
+                                {% else %}
+                                <div class="small">
+                                    <i class="fa fa-star{% if i.mainRating < 0.5 %} text-light{% elif i.mainRating >= 0.5 and i.mainRating < 1 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if i.mainRating < 1.5 %} text-light{% elif i.mainRating >= 1.5 and i.mainRating < 2 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if i.mainRating < 2.5 %} text-light{% elif i.mainRating >= 2.5 and i.mainRating < 3 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if i.mainRating < 3.5 %} text-light{% elif i.mainRating >= 3.5 and i.mainRating < 4 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                                    <i class="fa fa-star{% if i.mainRating < 4.5 %} text-light{% elif i.mainRating >= 4.5 and i.mainRating < 5 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+
+                                </div>
+                                {% endif %}
+
+                                <p class="text-capitalize small mb-0">
+                                    Dept- {{i.department}}
+                                </p>
+                                <p class="text-capitalize  small mb-0">
+                                    Post- {{i.post}}
+                                </p>
+                                <!-- <p class=" text-capitalize text-muted small  mb-0">Web developer</p> -->
+                                <!-- <p class="small text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nemo harum repellendus aut itaque. Temporibus quaerat dolores ut, cupiditate molestiae commodi! Distinctio praesentium, debitis aut minima doloribus earum
+                                quia commodi.</p> -->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            {% endfor %}
+           
+          </div> 
+ <div class="col-sm-12 paggI">
+            <div class="pagination-a">
+              <ul class="pagination justify-content-end">
+                
+                <li class="page-item">
+                  {% if page.has_previous %}
+                  <a class="page-link" href="{% url 'dept' department %}?page={{page.previous_page_number}}" tabindex="-1">
+                    {% comment %} <span class="bi bi-chevron-left"></span> {% endcomment %}
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+
+                  </a>
+                  {% endif %}
+                </li>
+                
+                {% for num_page in page.paginator.page_range%}
+                 {% if page.number == num_page %}
+                <li class="page-item active">
+                  <a class="page-link" href="{% url 'dept' department %}?page={{num_page}} " style="color:#fff !important;">{{num_page}}</a>
+                </li>
+                 {% else %}
+                 <li class="page-item">
+                  <a class="page-link" href="{% url 'dept' department %}?page={{num_page}}">{{num_page}}</a>
+                </li>
+                {% endif %}
+
+                {% endfor %}
+             
+                <li class="page-item next">
+                  {% if page.has_next %}
+                  <a class="page-link" href="{% url 'dept' department %}?page={{page.next_page_number}}">
+                    {% comment %} <span class="bi bi-chevron-right"></span> {% endcomment %}<i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                  </a>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
+
+        </div>
+        <!-- /cards -->
+</section>
+
+{% endblock %}

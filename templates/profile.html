@@ -1,0 +1,287 @@
+{% extends "base.html"%} {% load static %} {% block style %}
+<link rel="stylesheet" href={% static "css/profile.css" %}> {% endblock %} {% block content %}
+
+
+<style>
+    .modal-backdrop {
+        background-color: #c12d2d;
+        z-index: -10;
+    }
+    
+    .abc {
+        position: relative;
+        display: flex;
+        justify-content: left;
+        text-align: left;
+    }
+    /* [data-tooltip] {
+        position: relative;
+        cursor: default;
+    }
+    
+    [data-tooltip]::after {
+        position: absolute;
+        width: 250px;
+        left: calc(50% - 70px);
+        bottom: 125%;
+        text-align: center;
+        box-sizing: border-box;
+        content: attr(data-tooltip);
+        color: white;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 8px;
+        border-radius: 10px;
+        font-size: 0.9em;
+        font-weight: bold;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s, transfrorm 0.2s;
+    }
+    
+    [data-tooltip]:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+     */
+    /* @media screen and (max-width:630px) {
+        [data-tooltip]::after {
+            position: absolute;
+            left: calc(50% - 190px);
+        }
+        
+    } */
+    
+    .popbtn {
+        margin-top: 1rem;
+    }
+    
+    @media screen and (max-width:12000px) {
+        .popbtn {
+            padding: 1px;
+        }
+        .popbtn span {
+            font-size: 14px;
+        }
+    }
+    
+    @media screen and (max-width:450px) {
+        .popbtn {
+            padding: 0px;
+            margin-right: 4px;
+        }
+        .popbtn span {
+            font-size: 11px;
+        }
+        #team .card{
+            margin-top:20px;
+        }
+    }
+    /* .arv::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  } */
+    
+    .no_result {
+        padding-top: 4rem;
+        text-align: center;
+    }
+    
+    #sub_mess {
+        padding-top: 2rem;
+        color: red;
+        font-size: 18px;
+    }
+</style>
+{% include 'poponload.html' %} {% if pk == 0 %}
+<h1 class="no_result">No results found</h1>
+{% else %}
+<section id="team">
+
+    <div class="container my-3 py-5 text-center" style="max-width: 1440px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 " style="padding-right: 0px;padding-left: 10px; display:flex;justify-content:center">
+                <div class="card">
+                    <div class="card-body">
+                        {% for i in info %}
+                        <img src="{{i.pic.url}}" class="img-fluid rounded-circle w-50 mb-3" alt="">
+                        <h3 class="text-capitalize user-name" style="color: #426696;">{{i.name}}</h3>
+                        <h5 class="text-capitalize text mb-3 " style="color: #658ec6;">{{i.post}}</h5>
+                        <p class=" text-capitalize text medium  " style="color: #658ec6;">Dept- {{i.department}}</p>
+
+                        <p class=" text-capitalize text medium  " style="color: #658ec6;">Email- {{i.email}}</p>
+
+                        <p class=" text-capitalize text medium  " style="color: #658ec6;">Mobile- {{i.ph_num}}</p>
+
+                        {% if i.mainRating == 0 %}
+                        <br>
+                        <!-- <br> -->
+                        <h5 style="color: #658ec6;">No ratings yet</h5>
+
+                        {% else %}
+                        <div class="d-flex flex-row justify-content-center my-3">
+                            <!-- <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <i class="fas fa-star text-light"></i> -->
+                            <i class="fa fa-star{% if i.mainRating < 0.5 %} text-light{% elif i.mainRating >= 0.5 and i.mainRating < 1 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true" style="font-size: 3rem;"></i>
+                            <i class="fa fa-star{% if i.mainRating < 1.5 %} text-light{% elif i.mainRating >= 1.5 and i.mainRating < 2 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true" style="font-size: 3rem;"></i>
+                            <i class="fa fa-star{% if i.mainRating < 2.5 %} text-light{% elif i.mainRating >= 2.5 and i.mainRating < 3 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true" style="font-size: 3rem;"></i>
+                            <i class="fa fa-star{% if i.mainRating < 3.5 %} text-light{% elif i.mainRating >= 3.5 and i.mainRating < 4 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true" style="font-size: 3rem;"></i>
+                            <i class="fa fa-star{% if i.mainRating < 4.5 %} text-light{% elif i.mainRating >= 4.5 and i.mainRating < 5 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true" style="font-size: 3rem;"></i>
+                        </div>
+                        {% endif %} {% endfor %} {% for t,c in tagInfo%}
+                        <div class="d-flex flex-row  " style="margin-top: 25px; ">
+                            <p class="text-muted">{{t.tag_name}}</p> &nbsp; &nbsp;&nbsp; {%for l in c %}
+                            <i class="fa fa-star{% if l < 0.5 %} text-light{% elif l >= 0.5 and l < 1 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if l < 1.5 %} text-light{% elif l >= 1.5 and l < 2 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if l < 2.5 %} text-light{% elif l >= 2.5 and l < 3 %}-half-0 text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if l < 3.5 %} text-light{% elif l >= 3.5 and l < 4 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i>
+                            <i class="fa fa-star{% if l < 4.5 %} text-light{% elif l >= 4.5 and l < 5 %}-half-o text-warning{% endif %} text-warning" aria-hidden="true"></i> {% comment %} <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star-half-alt text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-light" style="font-size: 20px;"></i> {% endcomment %} {% endfor %}
+                        </div>
+                        {% endfor %} {% comment %}
+                        <div class="d-flex flex-row " style="margin-top: 25px;">
+                            <p class="text-muted">Clarity</p> &nbsp; &nbsp;&nbsp;
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star-half-alt text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-light" style="font-size: 20px;"></i>
+                        </div>
+                        <div class="d-flex flex-row " style="margin-top: 25px;">
+                            <p class="text-muted">Clarity</p> &nbsp; &nbsp;&nbsp;
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star-half-alt text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-light" style="font-size: 20px;"></i>
+                        </div>
+                        <div class="d-flex flex-row " style="margin-top: 25px;">
+                            <p class="text-muted">Clarity</p> &nbsp; &nbsp;&nbsp;
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star-half-alt text-warning" style="font-size: 20px;"></i>
+                            <i class="fas fa-star text-light" style="font-size: 20px;"></i>
+                        </div> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6 ">
+
+
+                {% comment %} ALERT MESSAGE {% endcomment %}
+
+                <form action="" method="POST" name="forms" onsubmit="return validate()">
+                    {% for msg in messages %}
+
+                    <div class="col" id="sub_mess">{{msg}}</div>
+                    {% endfor %} {% csrf_token %}
+
+                    <div class="row container ml-2 mt-3" style="height: 50px;">
+                        <!-- <div class="col font-weight-bold" style="font-size: 2rem;">
+              Give rating to teacher
+            </div> -->
+                        <label class="col font-weight-bold" style="font-size: 2rem; color: #658ec6; "> Give ratings </label>
+                        <div class="w-100"></div>
+
+                    </div>
+
+                    <br>
+                    <div class="row mt-3 ml-2 container">
+                        {% comment %}
+                        <div class="col font-weight-bold" style="font-size: 2rem; margin-bottom: 1rem;">
+                            Tags
+                        </div> {% endcomment %}
+                        <div class="w-100"></div>
+
+                        {% for tag in tags%}
+                        <div class="col-lg-6 col-sm-12 container" style="margin-top: 20px;margin-bottom: 20px;">
+
+                            <div class="tagdiv" style="display: flex;"><span class="abc" style="font-size: 1.2rem; font-weight: 530; color: #426696;">{{tag.tag_name}}</span>
+
+                                <!-- <div><span data-tooltip="{{tag.tag_hint}}"><i class="fa fa-info-circle" aria-hidden="true"
+                    style="font-size: 17px;"></i></span></div> -->
+                                <!-- <button type="button" class="bg-transparent " style="border: none;" data-toggle="tooltip"
+                  data-placement="right" title="More the star more is Clarity">
+                  <i class="fa fa-info-circle" aria-hidden="true" style="font-size: 17px;"></i>
+                </button> -->
+                                <!-- <span class="arv" data-tooltip="{{tag.tag_hint}}"><p style="font-size: 17px;">Hint</p></span>
+                                 -->
+                                <!-- <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{tag.tag_hint}}">
+                                  READ ME
+                                </button> -->
+
+
+                            </div>
+
+                            <div class="w-100"></div>
+                            <div class="rate col">
+
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_10" value="5" /><label for="{{tag.tag_name|cut:" "}}_10" title="5"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_9" value="4.5" /><label for="{{tag.tag_name|cut:" "}}_9" title="4.5" class="half"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_8" value="4" /><label for="{{tag.tag_name|cut:" "}}_8" title="4"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_7" value="3.5" /><label for="{{tag.tag_name|cut:" "}}_7" title="3.5" class="half"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_6" value="3" /><label for="{{tag.tag_name|cut:" "}}_6" title="3"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_5" value="2.5" /><label for="{{tag.tag_name|cut:" "}}_5" title="2.5" class="half"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_4" value="2" /><label for="{{tag.tag_name|cut:" "}}_4" title="2"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_3" value="1.5" /><label for="{{tag.tag_name|cut:" "}}_3" title="1.5" class="half"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_2" value="1" /><label for="{{tag.tag_name|cut:" "}}_2" title="1"></label>
+                                <input type="radio" name="{{tag.tag_name|cut:" "}}Rating" id="{{tag.tag_name|cut:" "}}_1" value="0.5" /><label for="{{tag.tag_name|cut:" "}}_1" title="0.5" class="half"></label> {% comment %}
+                                <a tabindex="0" class="btn btn-secondary popbtn" role="button" data-toggle="popover" data-trigger="focus" data-content="{{tag.tag_hint}}">
+                                    <span style="color: white;">Read Me</span></a> {% endcomment %}
+                                <a tabindex="0" class="btn btn-secondary popbtn" role="button" data-toggle="popover" data-trigger="focus" data-content="{{tag.tag_hint}}">
+                                    <span style="color: white; ">Read Me</span></a>
+                                <!-- <i class="fa fa-info-circle kes" aria-hidden="true"
+                    style="font-size: 17px; padding-top: 20px;"></i> -->
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                            <!-- onclick="alert('hello')" -->
+                        </div>
+                        <div class="w-100"></div>
+                        <!-- {% for msg in messages %}
+                        
+                        <div class="col" id="sub_mess">{{msg}}</div>
+                        {% endfor %} -->
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</section>
+
+
+
+{% endif %}
+
+
+
+<script type="text/javascript">
+    // console.log('{{flag}}')
+    // var kes = document.querySelector(".kes");
+    // var arv = document.querySelector(".arv");
+    // kes.addEventListener("click", () => {
+    //     arv.classList.toggle('arv::after');
+    //     console.log("laura")
+    // })
+</script>
+{% endblock %}
